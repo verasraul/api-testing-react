@@ -9,12 +9,9 @@ export default function SearchResults(){
     const [stockSearch, setStockSearch] = useState([])
     const [stockName, setStockName] = useState('')
     console.log('stockName =', stockName)
-    
-    // const handleStockChange = () => {
+
     const fetchData = async (event) => {
       // event.preventDefault();
-
-
         try {
           const response = await Search(event);
           setStockSearch(response);
@@ -23,15 +20,9 @@ export default function SearchResults(){
           console.log(error);
         }
       }
-    // }
-    
-    //handle the filter, and upstate when the filter value changes
-    //store the filter state and filter the list of gifs to display
 
 
     const handleStockChange = (event) => {
-      // event.preventDefault();
-
     //     console.log("This is EVENT=", event)
     //     const tickerClick = event; 
         setStockName(event)
@@ -48,10 +39,19 @@ export default function SearchResults(){
   
     }
     
+    const handleOnClick = (event) => {
+      // event.preventDefault();
+
+      return (
+        <div>
+          <StockList stock={stockSearch} />
+        </div>
+      )
+    }
+
 
     useEffect( () => {
       fetchData(stockName)
-      // .then(res => setStockSearch(res))
   }, [stockName])
   console.log(stockSearch)
     
@@ -67,7 +67,7 @@ export default function SearchResults(){
             <label htmlFor="search-gif">Search by Company Name: </label>
             <br></br>
             <br></br>
-              <form onSubmit={handleStockChange}>
+              <form>
               <input type="text" value={stockName} onChange={event => handleStockChange(event.target.value)} id="search-pane-input" placeholder="Search for Company"/>
             <div className="button-div">
               <button type="submit" >Search Ticker</button>

@@ -6,6 +6,7 @@ import SearchResults from './components/SearchResults';
 import { Search } from './services/Constants';
 import SearchStocks from './components/SearchStocks';
 import StockList from './components/StockList';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
         <nav>
           <NavLink to={"/"} >Home</NavLink>
           <NavLink to={"/search"} >Search-Stocks</NavLink>
-          <NavLink to={"/random"} >Random-Stock</NavLink>
+          {/* <NavLink to={"/random"} >Random-Stock</NavLink> */}
         </nav>  
       </div>
 
@@ -30,7 +31,9 @@ function App() {
       </Routes>
      
       </div>
-
+      <div className='Footer'>
+        <Footer />
+      </div>
 
     </div>
   );
